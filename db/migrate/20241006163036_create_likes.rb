@@ -3,7 +3,7 @@ class CreateLikes < ActiveRecord::Migration[6.1]
     create_table :likes do |t|
       t.bigint :user_id, null: false
       t.bigint :likable_id, null: false
-      t.bigint :likable_id, null: false
+      t.bigint :likable_type, null: false
       t.timestamps
     end
   end
