@@ -4,14 +4,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  # コメントテーブル関連付け       
+  # コメントテーブル関連       
   has_many :comments, dependent: :destroy
   
+  # いいね関連
+  has_many :likes, dependent: :destroy
+  
+  #投稿関連
   has_many :posts, dependent: :destroy
   
-  has_many :tickets, dependent: :destroy
+  # チケット所有関連
+  has_many :ticket_ownerships, dependent: :destroy
+  has_many :owned_tickets, through: :ticket_ownerships, source: :ticket
   
-         
+  
+  #フォロー関連       
   # フォローしている関連付け
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   
