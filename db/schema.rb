@@ -33,12 +33,13 @@ ActiveRecord::Schema.define(version: 2024_10_18_162631) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "comentable_id", null: false
-    t.bigint "commentable_type", null: false
+    t.integer "user_id", null: false
+    t.integer "commentable_id", null: false
+    t.string "commentable_type", null: false
     t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -49,21 +50,23 @@ ActiveRecord::Schema.define(version: 2024_10_18_162631) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "likable_id", null: false
-    t.bigint "likable_type", null: false
+    t.integer "user_id", null: false
+    t.string "likable_type", null: false
+    t.integer "likable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["likable_type", "likable_id"], name: "index_likes_on_likable"
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.text "message", null: false
-    t.bigint "notifiable_id", null: false
-    t.bigint "notifiable_type", null: false
-    t.datetime "read_at", null: false
+    t.integer "notifiable_id", null: false
+    t.string "notifiable_type", null: false
+    t.datetime "read_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
   end
 
   create_table "ownerships", force: :cascade do |t|
@@ -116,4 +119,7 @@ ActiveRecord::Schema.define(version: 2024_10_18_162631) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "users"
+  add_foreign_key "likes", "users"
+  add_foreign_key "notifications", "users"
 end
