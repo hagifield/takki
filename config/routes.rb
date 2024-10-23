@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'tickets/new'
+    get 'tickets/create'
+    get 'tickets/show'
+    get 'tickets/index'
+    get 'tickets/transfer'
+    get 'tickets/my_tickets'
+    get 'tickets/edit'
+    get 'tickets/update'
+    get 'tickets/destroy'
+  end
+  namespace :public do
     get 'posts/new'
     get 'posts/create'
     get 'posts/show'
