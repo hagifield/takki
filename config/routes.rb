@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get 'admin_notifications/new'
+    get 'admin_notifications/create'
+    get 'admin_notifications/index'
+    get 'admin_notifications/show'
+    get 'admin_notifications/edit'
+    get 'admin_notifications/update'
+    get 'admin_notifications/destroy'
+  end
+  namespace :admin do
     get 'users/index'
     get 'users/show'
     get 'users/edit'
