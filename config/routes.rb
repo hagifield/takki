@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'ownerships/create'
+    get 'ownerships/destroy'
+  end
+  namespace :public do
     get 'likes/index_posts'
     get 'likes/index_tickets'
     get 'likes/create'
