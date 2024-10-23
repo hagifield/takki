@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'notifications/index'
+    get 'notifications/show'
+    get 'notifications/destroy'
+  end
+  namespace :public do
     get 'tickets/new'
     get 'tickets/create'
     get 'tickets/show'
