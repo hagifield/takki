@@ -8,7 +8,7 @@ class CreateLikes < ActiveRecord::Migration[6.1]
     end
     
     add_foreign_key :likes, :users, column: :user_id
-    #likes テーブルの user_id カラムに外部キー制約を追加するための記述です。
-    #これにより、likes テーブルの user_id が users テーブルの id と関連付けられ、データベースの整合性が保たれます。
+    #likes テーブルの user_id カラムに外部キー制約を追加するための記述。
+    #これにより、likes テーブルの user_id が users テーブルの id と関連付けられ、データベースの整合性を保つ。
   end
 end
