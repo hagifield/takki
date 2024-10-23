@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'posts/new'
+    get 'posts/create'
+    get 'posts/show'
+    get 'posts/index'
+    get 'posts/edit'
+    get 'posts/update'
+    get 'posts/destroy'
+  end
+  namespace :public do
     get 'homes/top'
   end
   devise_for :admins, controllers: {
