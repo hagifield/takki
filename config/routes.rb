@@ -23,16 +23,15 @@ Rails.application.routes.draw do
     end
 
     # Tickets
+    get 'tickets/users/:id', to: 'tickets#my_tickets', as: 'user_tickets' # 自分の所持しているチケット一覧
     resources :tickets do
-      collection do
-        get 'users/:id', to: 'tickets#my_tickets', as: 'user_tickets' # 自分の所持しているチケット一覧
-      end
       member do
         get 'transfer'
       end
       resources :comments, only: [:create, :destroy] # チケットに対するコメント
     end
-
+    
+    
     # Notifications
     resources :notifications, only: [:index, :show, :destroy]
 
