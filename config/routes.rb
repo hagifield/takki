@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   # Public側
   scope module: :public do
     # Homes
