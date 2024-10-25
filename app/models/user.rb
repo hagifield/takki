@@ -3,6 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+#バリデーション
+  with_options presence: true do
+    validates :name
+    validates :email, uniqueness: true
+    validates :password, length: {minimum: 6}, if: :password_required?
+  end
+  
+  validates :introduction, length: {maximum: 300}
   
 # Active Storage設定: ユーザーのプロフィール画像
   has_one_attached :profile_image
@@ -62,5 +71,13 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
+  
+  private
+
+  def password_required?
+    new_record? || password.present?
+  end
+
   
 end
