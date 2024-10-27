@@ -1,5 +1,10 @@
 ja:
   enums:
+    ticket:
+      status:
+        unused: "未使用"
+        used: "使用済み"
+        unusable: "使用不可"
     order:
       order_status:
         pending: "入金待ち"

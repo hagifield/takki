@@ -1,5 +1,8 @@
 class Ticket < ApplicationRecord
   
+  #チケットステータスのenum設定
+  enum status: { unused: 0, used: 1, unusable: 2 }
+  
   # 所有権モデルとの関連付け
   has_many :ownerships, dependent: :destroy
   # チケットの所有者を取得
