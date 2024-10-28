@@ -76,7 +76,11 @@ module.exports = function(api) {
         {
           async: false
         }
-      ]
+      ],
+      // 追加したオプショナルチェーンとヌル合体演算子プラグイン
+      '@babel/plugin-proposal-optional-chaining',
+      '@babel/plugin-proposal-nullish-coalescing-operator',
+      '@babel/plugin-proposal-logical-assignment-operators',
     ].filter(Boolean)
   }
 }
