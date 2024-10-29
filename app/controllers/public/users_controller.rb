@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:edit, :update, :show, :destroy, :follower, :followed]
+  before_action :set_user, only: [:edit, :update, :show, :destroy, :followers, :followings]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def mypage
@@ -26,13 +26,15 @@ class Public::UsersController < ApplicationController
   def index
     @users = User.all
   end
-
-  def follower
+  
+  #フォロワー一覧
+  def followers
     @followers = @user.followers
   end
-
-  def followed
-    @followed_users = @user.followings
+  
+  #フォロー一覧
+  def followings
+    @followings_users = @user.followings
   end
 
   def destroy
