@@ -8,7 +8,7 @@
     <!-- ユーザー画像 -->
     <div class="profile-image">
       <% if @user.profile_image.attached? %>
-        <%= image_tag @user.profile_image.variant(resize: "150x150"), alt: @user.name %>
+        <%= image_tag @user.profile_image, size: "150x150", alt: @user.name %>
       <% else %>
         <%= image_tag "no-image.jpeg", alt: "デフォルトのプロフィール画像", size: "150x150" %>
       <% end %>
